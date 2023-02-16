@@ -16,7 +16,7 @@ import {
   useColorModeValue
 } from '@chakra-ui/react'
 import { HamburgerIcon } from '@chakra-ui/icons'
-// import ThemeToggleButton from './theme-toggle-button'
+import ThemeToggleButton from './theme-toggle-button'
 import { IoLogoGithub } from 'react-icons/io5'
 
 const LinkItem = ({ href, path, target, children, ...props }) => {
@@ -38,13 +38,14 @@ const LinkItem = ({ href, path, target, children, ...props }) => {
   )
 }
 
+// TODO Fix para los links items
+
 const MenuLink = forwardRef((props, ref) => (
-  <Link ref={ref} as={NextLink} {...props} />
+  <Link ref={ref} as={LinkItem} {...props} />
 ))
 
 const Navbar = props => {
   const { path } = props
-
   return (
     <Box
       position="fixed"
@@ -98,7 +99,7 @@ const Navbar = props => {
         </Stack>
 
         <Box flex={1} align="right">
-          {/* <ThemeToggleButton /> */}
+          <ThemeToggleButton />
 
           <Box ml={2} display={{ base: 'inline-block', md: 'none' }}>
             <Menu isLazy id="navbar-menu">
@@ -119,7 +120,7 @@ const Navbar = props => {
                   Posts
                 </MenuItem>
                 <MenuItem
-                  as={Link}
+                  as={MenuLink}
                   href="https://github.com/davidtaim"
                 >
                   View Source
